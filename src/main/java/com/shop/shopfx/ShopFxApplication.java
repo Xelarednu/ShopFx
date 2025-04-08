@@ -21,5 +21,6 @@ public class ShopFxApplication extends Application {
         ShopFxApplication.primaryStage = primaryStage;
 
         FormLoader formLoader = SpringApplication.run(ShopFxApplication.class).getBean(FormLoader.class);
+        formLoader.loadMainForm();
     }
 }
