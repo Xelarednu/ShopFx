@@ -38,6 +38,27 @@ public class FormLoader {
         }
     }
 
+    public void loadLoginForm() {
+        FXMLLoader fxmlLoader = springFXMLLoader.load("/view/user/loginForm.fxml");
+        Parent root;
+
+        try {
+            root = fxmlLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        getPrimaryStage().setResizable(false);
+        getPrimaryStage().setTitle("Login");
+        getPrimaryStage().centerOnScreen();
+        getPrimaryStage().setOnCloseRequest(this::handle);
+        getPrimaryStage().setScene(scene);
+        getPrimaryStage().show();
+    }
+
+
     public void loadMainForm() {
         FXMLLoader fxmlLoader = springFXMLLoader.load("/view/main/mainForm.fxml");
         Parent root;
@@ -50,10 +71,8 @@ public class FormLoader {
 
         Scene scene = new Scene(root);
 
-        getPrimaryStage().setResizable(false);
-        getPrimaryStage().setScene(scene);
         getPrimaryStage().setTitle("Main");
-        getPrimaryStage().centerOnScreen();
+        getPrimaryStage().setScene(scene);
         getPrimaryStage().show();
     }
 
