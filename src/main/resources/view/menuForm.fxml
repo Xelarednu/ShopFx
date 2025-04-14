@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vbMenuFormRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.shopfx.controller.MenuFormController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu fx:id="mGpu" mnemonicParsing="false" text="Graphic cards">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#showBookForm" text="Add new gpu" />
+                        <MenuItem mnemonicParsing="false" onAction="#showBoughtGpuForm" text="List of sold gpu's" />
+                    </items>
+                </Menu>
+                <Menu fx:id="mUsers" mnemonicParsing="false" text="User">
+                    <items>
+                        <MenuItem fx:id="miLogin" mnemonicParsing="false" onAction="#showLoginForm" text="Login" />
+                        <MenuItem fx:id="miLogout" mnemonicParsing="false" onAction="#logout" text="Logout" />
+                        <MenuItem fx:id="miProfile" mnemonicParsing="false" onAction="#showProfileForm" text="Profile" />
+                    </items>
+                </Menu>
+                <Menu fx:id="mAdmin" mnemonicParsing="false" text="Admin">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#showAdminPanelForm" text="Admin panel" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </children>
+</VBox>

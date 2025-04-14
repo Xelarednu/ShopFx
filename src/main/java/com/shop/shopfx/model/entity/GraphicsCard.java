@@ -14,17 +14,10 @@ public class GraphicsCard {
     private int memorySize;
     private int releaseYear;
     private double price;
+    private int quantity;
 
     public GraphicsCard() {
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -67,16 +60,24 @@ public class GraphicsCard {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         GraphicsCard that = (GraphicsCard) o;
-        return memorySize == that.memorySize && releaseYear == that.releaseYear && Double.compare(price, that.price) == 0 && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(manufacturer, that.manufacturer);
+        return memorySize == that.memorySize && releaseYear == that.releaseYear && Double.compare(price, that.price) == 0 && quantity == that.quantity && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(manufacturer, that.manufacturer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, manufacturer, memorySize, releaseYear, price);
+        return Objects.hash(id, name, manufacturer, memorySize, releaseYear, price, quantity);
     }
 
     @Override
@@ -88,6 +89,7 @@ public class GraphicsCard {
                 ", memorySize=" + memorySize +
                 ", releaseYear=" + releaseYear +
                 ", price=" + price +
+                ", quantity=" + quantity +
                 '}';
     }
 }

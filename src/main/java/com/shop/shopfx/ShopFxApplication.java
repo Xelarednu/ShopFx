@@ -1,6 +1,6 @@
 package com.shop.shopfx;
 
-import com.shop.shopfx.tools.FormLoader;
+import com.shop.shopfx.loaders.LoginFormLoader;
 import javafx.application.Application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +18,8 @@ public class ShopFxApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        ShopFxApplication.primaryStage = primaryStage;
-
-        FormLoader formLoader = SpringApplication.run(ShopFxApplication.class).getBean(FormLoader.class);
-        formLoader.loadLoginForm();
+        LoginFormLoader loginFormLoader = SpringApplication.run(ShopFxApplication.class).getBean(LoginFormLoader.class);
+        loginFormLoader.setPrimaryStage(primaryStage);
+        loginFormLoader.load();
     }
 }

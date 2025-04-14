@@ -1,6 +1,7 @@
 package com.shop.shopfx.tools;
 
 import com.shop.shopfx.ShopFxApplication;
+import com.shop.shopfx.loaders.SpringFXMLLoader;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
