@@ -1,8 +1,7 @@
 package com.shop.shopfx.controller;
 
-import com.shop.shopfx.loaders.BoughtGpuListFormLoader;
-import com.shop.shopfx.loaders.LoginFormLoader;
-import com.shop.shopfx.loaders.NewGpuFormLoader;
+import com.shop.shopfx.loaders.*;
+import com.shop.shopfx.security.Role;
 import com.shop.shopfx.security.SessionManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,27 +68,27 @@ public class MenuFormController implements Initializable {
         adminPanelFormLoader.load();
     }
 
-    private void initMenuVisible(){
+    private void initMenuVisible() {
         if(sessionManager.isLoggedIn()){
-            if(sessionManager.getCurrentUser().getRoles().contains(Role.ADMINISTRATOR.toString())){
-                mBooks.setVisible(true);
+            if(sessionManager.getCurrentUser().getRoles().contains(Role.ADMIN.toString())){
+                mGpu.setVisible(true);
                 mAdmin.setVisible(true);
                 mUsers.setVisible(true);
-                miEnter.setVisible(false);
+                miLogin.setVisible(false);
                 miProfile.setVisible(true);
                 miLogout.setVisible(true);
-            }else if(sessionManager.getCurrentUser().getRoles().contains(Role.MANAGER.toString())){
-                mBooks.setVisible(true);
+            } else if(sessionManager.getCurrentUser().getRoles().contains(Role.MANAGER.toString())){
+                mGpu.setVisible(true);
                 mAdmin.setVisible(false);
                 mUsers.setVisible(true);
-                miEnter.setVisible(false);
+                miLogin.setVisible(false);
                 miProfile.setVisible(true);
                 miLogout.setVisible(true);
-            }else if(sessionManager.getCurrentUser().getRoles().contains(Role.USER.toString())){
-                mBooks.setVisible(false);
+            } else if(sessionManager.getCurrentUser().getRoles().contains(Role.USER.toString())){
+                mGpu.setVisible(false);
                 mAdmin.setVisible(false);
                 mUsers.setVisible(true);
-                miEnter.setVisible(false);
+                miLogin.setVisible(false);
                 miProfile.setVisible(true);
                 miLogout.setVisible(true);
             }

@@ -1,10 +1,13 @@
 package com.shop.shopfx.model.entity;
 
 import jakarta.persistence.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class User {
@@ -98,5 +101,29 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", roles=" + roles +
                 '}';
+    }
+
+    @Transient
+    public StringProperty idProperty() {
+        return new SimpleStringProperty(id.toString());
+    }
+    @Transient
+    public StringProperty firstnameProperty() {
+        return new SimpleStringProperty(firstName);
+    }
+    @Transient
+    public StringProperty lastnameProperty() {
+        return new SimpleStringProperty(lastName);
+    }
+    @Transient
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+    @Transient
+    public StringProperty rolesProperty() {
+        String roles = getRoles().stream()
+                .map(role -> role.toString() )
+                .collect(Collectors.joining(", "));
+        return new SimpleStringProperty(roles);
     }
 }

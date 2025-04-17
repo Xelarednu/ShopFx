@@ -1,5 +1,6 @@
 package com.shop.shopfx.loaders;
 
+import com.shop.shopfx.controller.MenuFormController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import org.springframework.stereotype.Component;

@@ -6,11 +6,13 @@ import com.shop.shopfx.security.Role;
 import com.shop.shopfx.security.SessionManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GpuService implements com.shop.shopfx.interfaces.GpuService  {
     private GpuRepository gpuRepository;
     private SessionManager sessionManager;

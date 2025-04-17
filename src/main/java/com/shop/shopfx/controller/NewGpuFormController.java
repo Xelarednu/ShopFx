@@ -1,39 +1,31 @@
 package com.shop.shopfx.controller;
 
-import com.shop.shopfx.loaders.AbstractFormLoader;
+import com.shop.shopfx.interfaces.GpuService;
 import com.shop.shopfx.loaders.MainFormLoader;
-import com.shop.shopfx.loaders.SpringFXMLLoader;
 import com.shop.shopfx.model.entity.GraphicsCard;
-import com.shop.shopfx.service.GpuService;
-import javafx.collections.FXCollections;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.springframework.stereotype.Component;
-
-import java.io.File;
-
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
-public class NewGpuFormController extends AbstractFormLoader {
+public class NewGpuFormController implements Initializable {
     private final MainFormLoader mainFormLoader;
     private final GpuService gpuService;
     
     @FXML
     private Label lbInfo;
     
-    @FXML 
+    @FXML
     private TextField tfName;
     
     @FXML
     private TextField tfManufacturer;
     
-    @FXML 
+    @FXML
     private TextField tfReleaseYear;
     
     @FXML
@@ -44,7 +36,8 @@ public class NewGpuFormController extends AbstractFormLoader {
         this.gpuService = gpuService;
     }
 
-    @FXML private void create(){
+    @FXML
+    private void create() {
         GraphicsCard graphicsCard = new GraphicsCard();
         
         if (tfName.getText().isEmpty() || tfReleaseYear.getText().isEmpty() || tfQuantity.getText().isEmpty() || tfManufacturer.getText().isEmpty()) {
@@ -59,7 +52,17 @@ public class NewGpuFormController extends AbstractFormLoader {
         mainFormLoader.load();
     }
 
-    @FXML private void goToMainForm(){
+    @FXML
+    private void goToMainForm() {
         mainFormLoader.load();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfQuantity.setOnKeyPressed(event -> {
+            if (event.getCode().toString().equals("ENTER")) {
+                this.create();
+            }
+        });
     }
 }

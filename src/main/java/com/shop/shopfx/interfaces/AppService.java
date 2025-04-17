@@ -9,5 +9,4 @@ public interface AppService<T> {
     Optional<T> add(T t);
     List<T> getList();
     ObservableList<T> getObservableList();
-
 }
