@@ -3,15 +3,12 @@ package com.shop.shopfx.controller;
 import com.shop.shopfx.interfaces.GpuService;
 import com.shop.shopfx.loaders.MainFormLoader;
 import com.shop.shopfx.model.entity.GraphicsCard;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -27,13 +24,19 @@ public class EditGpuFormController implements Initializable {
     private TextField tfName;
 
     @FXML
+    private TextField tfManufacturer;
+
+    @FXML
+    private TextField tfMemoryAmount;
+
+    @FXML
     private TextField tfReleaseYear;
 
     @FXML
-    private TextField tfQuantity;
+    private TextField tfPrice;
 
     @FXML
-    private TextField tfCount;
+    private TextField tfQuantity;
 
 
     public EditGpuFormController(MainFormLoader mainFormLoader, GpuService gpuService) {
@@ -44,9 +47,11 @@ public class EditGpuFormController implements Initializable {
     @FXML
     private void goEdit() {
         editGpu.setName(tfName.getText());
+        editGpu.setManufacturer(tfManufacturer.getText());
+        editGpu.setMemorySize(Integer.parseInt(tfMemoryAmount.getText()));
         editGpu.setReleaseYear(Integer.parseInt(tfReleaseYear.getText()));
+        editGpu.setPrice(Integer.parseInt(tfPrice.getText()));
         editGpu.setQuantity(Integer.parseInt(tfQuantity.getText()));
-        editGpu.setQuantity(Integer.parseInt(tfCount.getText()));
 
         gpuService.add(editGpu);
         mainFormLoader.load();
@@ -60,17 +65,14 @@ public class EditGpuFormController implements Initializable {
         this.editGpu = editGpu;
         tfId.setText(editGpu.getId().toString());
         tfName.setText(editGpu.getName());
+        tfManufacturer.setText(editGpu.getManufacturer());
+        tfMemoryAmount.setText(((Integer) editGpu.getMemorySize()).toString());
         tfReleaseYear.setText(((Integer) editGpu.getReleaseYear()).toString());
         tfQuantity.setText(((Integer) editGpu.getQuantity()).toString());
-        tfCount.setText(((Integer) editGpu.getQuantity()).toString());
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tfCount.setOnKeyPressed(event -> {
-            if (event.getCode().toString().equals("ENTER")) {
-                this.goEdit();
-            }
-        });
     }
 }

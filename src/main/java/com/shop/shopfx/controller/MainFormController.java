@@ -1,6 +1,8 @@
 package com.shop.shopfx.controller;
 
+import com.shop.shopfx.loaders.EditGpuFormLoader;
 import com.shop.shopfx.loaders.MenuFormLoader;
+import com.shop.shopfx.model.entity.GraphicsCard;
 import com.shop.shopfx.security.SessionManager;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,25 +21,23 @@ import java.util.ResourceBundle;
 public class MainFormController implements Initializable {
 
     private final MenuFormLoader menuFormLoader;
-    private final EditBookFormLoader editBookFormLoader;
+    private final EditGpuFormLoader editGpuFormLoader;
     private final SelectedBookFromModalityLoader selectedBookFromModalityLoader;
     private final BookService bookService;
     private final HistoryService historyService;
     private final SessionManager sessionManager;
     @FXML private VBox vbMainFormRoot;
-    @FXML private TableView<Book> tvListBooks;
-    @FXML private TableColumn<Book, String> tcId;
-    @FXML private TableColumn<Book, String> tcTitle;
-    @FXML private TableColumn<Book, String> tcAuthors;
-    @FXML private TableColumn<Book, String> tcPublicationYear;
-    @FXML private TableColumn<Book, String> tcQuantity;
-    @FXML private TableColumn<Book, String> tcCount;
-    @FXML private HBox hbEditBook;
+    @FXML private TableView<GraphicsCard> tvListBooks;
+    @FXML private TableColumn<GraphicsCard, String> tcId;
+    @FXML private TableColumn<GraphicsCard, String> tcTitle;
+    @FXML private TableColumn<GraphicsCard, String> tcPublicationYear;
+    @FXML private TableColumn<GraphicsCard, String> tcQuantity;
+    @FXML private HBox hbEditGpu;
     @FXML private Label lbInfo;
 
-    public MainFormController(MenuFormLoader menuFormLoader, EditBookFormLoader editBookFormLoader, SelectedBookFromModalityLoader selectedBookFromModalityLoader, BookService bookService, HistoryService historyService, SessionManager sessionManager) {
+    public MainFormController(MenuFormLoader menuFormLoader, EditGpuFormLoader editGpuFormLoader, SelectedBookFromModalityLoader selectedBookFromModalityLoader, BookService bookService, HistoryService historyService, SessionManager sessionManager) {
         this.menuFormLoader = menuFormLoader;
-        this.editBookFormLoader = editBookFormLoader;
+        this.editGpuFormLoader = editGpuFormLoader;
         this.selectedBookFromModalityLoader = selectedBookFromModalityLoader;
         this.sessionManager = sessionManager;
         this.bookService = bookService;
@@ -46,7 +46,7 @@ public class MainFormController implements Initializable {
 
     @FXML private void showEditBookForm() {
         if(!tvListBooks.getSelectionModel().isEmpty()){
-            editBookFormLoader.load(tvListBooks.getSelectionModel().getSelectedItem());
+            editGpuFormLoader.load(tvListBooks.getSelectionModel().getSelectedItem());
         }
     }
     private void openBookDetails(Book book) {
@@ -65,7 +65,7 @@ public class MainFormController implements Initializable {
         //Добавляем форму меню первым элементом vbMainFormRoot
         menuFormLoader.load();
         vbMainFormRoot.getChildren().addFirst(menuFormLoader.getMenuFormController().getRootMenuForm());
-        // Инициируем список книг
+        // Инициируем список книга
         tvListBooks.setItems(bookService.getObservableList());
 
         // Настраиваем отображение полей книги в столбцах таблицы, для удобства создали StringProperty в Book

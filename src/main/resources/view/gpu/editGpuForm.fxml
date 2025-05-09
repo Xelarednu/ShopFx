@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="379.0" prefWidth="628.0" spacing="3.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.shop.shopfx.controller.EditGpuFormController">
+    <children>
+        <Label alignment="CENTER" prefHeight="62.0" prefWidth="600.0" text="Modify graphics card data">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <HBox prefHeight="28.0" prefWidth="600.0">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Name">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="tfName" prefHeight="25.0" prefWidth="308.0" />
+                <TextField fx:id="tfId" layoutX="181.0" layoutY="10.0" prefHeight="25.0" prefWidth="0.0" visible="false" />
+            </children>
+        </HBox>
+        <HBox layoutX="10.0" layoutY="99.0" prefHeight="28.0" prefWidth="600.0">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Manufacturer">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="tfManufacturer" prefHeight="25.0" prefWidth="174.0" />
+            </children>
+        </HBox>
+      <HBox layoutX="10.0" layoutY="106.0" prefHeight="28.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Memory amount">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="tfMemoryAmount" prefHeight="25.0" prefWidth="174.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="28.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Release year">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="tfReleaseYear" prefHeight="25.0" prefWidth="174.0" />
+         </children>
+      </HBox>
+        <HBox layoutX="10.0" layoutY="239.0" prefHeight="28.0" prefWidth="600.0">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Price">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="tfPrice" prefHeight="25.0" prefWidth="118.0" />
+            </children>
+        </HBox>
+        <HBox layoutX="10.0" layoutY="267.0" prefHeight="28.0" prefWidth="600.0">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="161.0" text="Quantity">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <TextField fx:id="tfQuantity" prefHeight="25.0" prefWidth="76.0" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="127.0" prefHeight="58.0" prefWidth="600.0" spacing="5.0">
+            <children>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="155.0">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <Button mnemonicParsing="false" onAction="#goEdit" prefHeight="25.0" prefWidth="125.0" text="Change" />
+                <Button mnemonicParsing="false" onAction="#goToMainForm" text="Back on main page" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

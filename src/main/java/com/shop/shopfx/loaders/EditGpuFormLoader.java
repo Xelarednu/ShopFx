@@ -1,5 +1,6 @@
 package com.shop.shopfx.loaders;
 
+import com.shop.shopfx.controller.EditGpuFormController;
 import com.shop.shopfx.model.entity.GraphicsCard;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,20 +16,18 @@ public class EditGpuFormLoader extends AbstractFormLoader {
         super(springFXMLLoader);
     }
 
-
     @Override
     public void load() {
         throw  new UnsupportedOperationException("Not supported yet.");
-
     }
 
     public void load(GraphicsCard selectedGpu) {
         FXMLLoader fxmlLoader = getSpringFXMLLoader().load("/view/gpu/editGpuForm.fxml");
         try {
-            Parent editBookFormRoot = fxmlLoader.load();
+            Parent editGpuFormRoot = fxmlLoader.load();
             EditGpuFormController editGpuFormController = fxmlLoader.getController();
             editGpuFormController.setEditGpu(selectedGpu);
-            Scene scene = new Scene(editBookFormRoot);
+            Scene scene = new Scene(editGpuFormRoot);
             getPrimaryStage().setTitle("Graphics card shop - Edit GPU");
             getPrimaryStage().setScene(scene);
         } catch (IOException e) {
